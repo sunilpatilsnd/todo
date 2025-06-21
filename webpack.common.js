@@ -3,9 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { Template, LoaderOptionsPlugin } = require("webpack");
 
 module.exports = {
-  mode: "development",
+  // mode: "development",
   entry: "./src/index.js",
-  devtool: "eval-source-map",
+  // devtool: "eval-source-map",
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
@@ -13,7 +13,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/template.html",
+      template: "./src/index.html",
     }),
   ],
   module: {
