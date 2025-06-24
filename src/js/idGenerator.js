@@ -1,9 +1,9 @@
 //function to generate increment id
-const getNewId = () => {
+const getNewId = (type) => {
   let currId = 0;
   return function () {
     currId++;
-    return `task${currId}`;
+    return `${type}${currId}`;
   };
 };
 

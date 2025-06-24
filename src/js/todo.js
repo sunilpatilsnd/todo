@@ -1,6 +1,8 @@
 const { getNewId } = require("./idGenerator.js");
 
-const createToDoItem = (
+const idGenerator = getNewId("todo"); //closure to retain last id value
+
+const createTodoItem = (
   title,
   description,
   dueDate,
@@ -18,9 +20,10 @@ const createToDoItem = (
       return { item: item, checked: false };
     }), //creating checklist object for list of checklist items with checked flag
     completed: false,
+    markCompleated() {
+      return (this.completed = true);
+    },
   };
 };
 
-const idGenerator = getNewId(); //closure to retain last id value
-
-export { createToDoItem };
+export { createTodoItem };
