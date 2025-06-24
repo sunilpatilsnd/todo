@@ -135,12 +135,21 @@ body {
 
 /* Custom CSS */
 body {
-  color: #b0d8e3;
-  background-color: #0e3768;
 }
 header,
 footer {
   background-color: #0e3768;
   color: #b0d8e3;
   /* 	#efe897 */
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+}
+main {
+  margin: 0 auto;
+  max-width: 80%;
 }

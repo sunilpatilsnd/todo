@@ -1,37 +1,44 @@
-const { createToDoItem } = require("./todo.js");
+const { createTodoItem } = require("./js/todo.js");
+const { createProject } = require("./js/project.js");
 import "./styles.css";
-const { isDate } = require("date-fns");
 
 let d = new Date("2025-12-31");
 
-console.log(isDate(d));
-
-const todoItem = createToDoItem(
-  "test",
-  "test desc",
+const todoItem = createTodoItem(
+  "brush",
+  "take time and clense your teeth",
   d,
   "high",
-  ["test1", "test2"],
+  ["brush", "toothpaste"],
   false
 );
 
-const todoItem2 = createToDoItem(
-  "test2",
-  "test desc",
-  d,
+const todoItem2 = createTodoItem(
+  "bath",
+  "time to wash youeself",
+  new Date("06/23/2024"),
   "high",
-  ["test1", "test2"],
+  ["towel", "soap"],
   false
 );
-todoItem.checklist[0].checked = true;
 
-console.log(todoItem);
+const todoItem3 = createTodoItem(
+  "breakfast",
+  "have a helthy breakfast",
+  new Date("8/23/2024"),
+  "high",
+  ["food", "coffee"],
+  false
+);
 
-console.log(todoItem2);
+// todoItem.checklist[0].checked = true;
+// let res = todoItem.markCompleated();
+// console.log(todoItem.completed);
+// // console.log(todoItem2);
+// console.log(todoItem3);console.log(todoItem3);
 
-const JSONString = JSON.stringify(todoItem);
+const todoList = [todoItem, todoItem2, todoItem3];
 
-console.log(JSONString);
+const project = createProject("default", todoList);
 
-const jsObject = JSON.parse(JSONString);
-console.log(jsObject);
+console.log(project);
