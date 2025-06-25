@@ -1,5 +1,6 @@
 const { createTodoItem } = require("./js/todo.js");
 const { createProject } = require("./js/project.js");
+const { loadProject } = require("./js/projectUI.js");
 import "./styles.css";
 
 let d = new Date("2025-12-31");
@@ -40,5 +41,15 @@ const todoItem3 = createTodoItem(
 const todoList = [todoItem, todoItem2, todoItem3];
 
 const project = createProject("default", todoList);
+const project2 = createProject("default2", todoList);
 
-console.log(project);
+const projContainer = document.querySelector(".projects");
+
+const projUI = loadProject(project2);
+
+projContainer.appendChild(projUI);
+
+console.log(projContainer);
+console.log(project2);
+
+// console.log(a);
