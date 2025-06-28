@@ -1,4 +1,4 @@
-const { format } = require("date-fns");
+const { getTodoUI } = require("./todoUI");
 
 function loadProject(project) {
   const projectUI = document.createElement("div");
@@ -12,26 +12,18 @@ function loadProject(project) {
   const todosUI = document.createElement("div");
   todosUI.classList.add("todos");
 
-  project.todos.forEach((item) => {
-    const todoUI = document.createElement("div");
-    todoUI.id = item.id;
-    todoUI.classList.add("todo");
+  // console.log(project.todos.length);
 
-    const title = document.createElement("h3");
-    title.textContent = item.title;
-
-    const description = document.createElement("p");
-    description.textContent = item.description;
-
-    const dueDate = document.createElement("p");
-    dueDate.textContent = format(item.dueDate, "do MMM yyyy");
-
-    todoUI.appendChild(title);
-    todoUI.appendChild(description);
-    todoUI.appendChild(dueDate);
-
-    todosUI.appendChild(todoUI);
-  });
+  if (project.todos) {
+    project.todos.forEach((item) => {
+      const todoItem = getTodoUI(item);
+      todosUI.appendChild(todoItem);
+    });
+  } else {
+    const todoItem = document.createElement("p");
+    todoItem.textContent = "No Tasks added yet";
+    todosUI.appendChild(todoItem);
+  }
 
   projectUI.appendChild(todosUI);
 

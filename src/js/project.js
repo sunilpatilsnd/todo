@@ -10,4 +10,7 @@ const createProject = (title, todos) => {
   };
 };
 
-export { createProject };
+const addProject = (projects, project) => {
+  return { ...projects, project };
+};
+export { createProject, addProject };
