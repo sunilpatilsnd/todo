@@ -1,6 +1,12 @@
 const { getTodoUI } = require("./todoUI");
 
 function loadProject(project) {
+  const container = document.querySelector(".projects");
+
+  while (container.lastChild) {
+    container.removeChild(container.lastChild);
+  }
+
   const projectUI = document.createElement("div");
   const projectTitle = document.createElement("h2");
 
@@ -27,7 +33,7 @@ function loadProject(project) {
 
   projectUI.appendChild(todosUI);
 
-  return projectUI;
+  container.appendChild(projectUI);
 }
 
 export { loadProject };
