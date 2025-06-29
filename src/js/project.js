@@ -2,15 +2,18 @@ const { getNewId } = require("./idGenerator.js");
 
 const idGenerator = getNewId("project");
 
-const createProject = (title, todos) => {
+const createProject = (title) => {
   return {
     id: idGenerator(),
     title: title,
-    todos: todos,
+    todos: [],
+    addTodo(todo) {
+      this.todos.push(todo);
+    },
+    editTitle(newTitle) {
+      this.title = newTitle;
+    },
   };
 };
 
-const addProject = (projects, project) => {
-  return { ...projects, project };
-};
-export { createProject, addProject };
+export { createProject };
