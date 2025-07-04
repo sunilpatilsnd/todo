@@ -236,3 +236,15 @@ aside {
 ::backdrop {
   background-color: rgb(0, 0, 0, 0.7);
 }
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+label {
+  display: block;
+}
+button {
+  cursor: pointer;
+}
