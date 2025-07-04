@@ -84,31 +84,3 @@ export { runApp };
 //   ["food", "coffee"],
 //   false
 // );
-
-// // todoItem.checklist[0].checked = true;
-// // let res = todoItem.markCompleated();
-// // console.log(todoItem.completed);
-// // // console.log(todoItem2);
-// // console.log(todoItem3);console.log(todoItem3);
-
-// const todoList = [todoItem, todoItem2, todoItem3];
-
-// const project = createProject("default project");
-// const project2 = createProject("default2", todoList);
-// const project3 = createProject("Project Name", todoList);
-
-// addTodoItem(project3, todoItem4);
-
-// addProject(ProjectList, project3);
-// const projContainer = document.querySelector(".projects");
-
-// const projUI = loadProject(project);
-
-// projContainer.appendChild(projUI);
-
-// listProjects(ProjectList);
-
-// console.log(projContainer);
-// console.log(project2);
-
-// console.log(a);

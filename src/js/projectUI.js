@@ -1,4 +1,4 @@
-const { getTodoUI } = require("./todoUI");
+const { getTodoUI, todoForm } = require("./todoUI");
 
 function loadProject(project) {
   const container = document.querySelector(".projects");
@@ -31,9 +31,22 @@ function loadProject(project) {
     todosUI.appendChild(todoItem);
   }
 
+  const addTodo = document.createElement("button");
+  addTodo.textContent = "Add To Do";
+  addTodo.setAttribute("ProjectId", project.id);
+
+  addTodo.addEventListener("click", () => {
+    todoForm(project);
+  });
+
   projectUI.appendChild(todosUI);
+  projectUI.appendChild(addTodo);
 
   container.appendChild(projectUI);
 }
 
-export { loadProject };
+const addProject = (event) => {
+  console.log("add project form needs to be added");
+};
+
+export { loadProject, addProject };

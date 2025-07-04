@@ -16,4 +16,8 @@ const createProject = (title) => {
   };
 };
 
-export { createProject };
+const addTodo = (project, todo) => {
+  project.todos.push(todo);
+};
+
+export { createProject, addTodo };

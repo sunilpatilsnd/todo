@@ -1,4 +1,4 @@
-const { loadProject } = require("./projectUI.js");
+const { loadProject, addProject } = require("./projectUI.js");
 
 const listProjects = (projects) => {
   const container = document.querySelector("aside");
@@ -29,7 +29,18 @@ const listProjects = (projects) => {
   });
 
   container.appendChild(projectsList);
+
+  // const projectForm = document.querySelector("#projectForm");
+  const button = document.createElement("button");
+  button.textContent = "Add Project";
+
+  container.appendChild(button);
+
+  button.addEventListener("click", (event) => {
+    addProject(event);
+  });
 };
+
 const emptyContainer = (item) => {
   while (item.lastChild) {
     item.removeChild(item.lastChild);
