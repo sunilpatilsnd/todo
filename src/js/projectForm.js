@@ -1,7 +1,7 @@
 const { createProject } = require("./project.js");
+const { loadProject } = require("./projectUI.js");
 
 const addProjectUI = (projects) => {
-  console.log(projects);
   const dialog = document.querySelector("#projectForm");
 
   while (dialog.lastChild) {
@@ -12,7 +12,7 @@ const addProjectUI = (projects) => {
   form.setAttribute("action", "/");
   form.setAttribute("method", "post");
 
-  const header = document.createElement("h1");
+  const header = document.createElement("h2");
   header.textContent = "Add New Project";
 
   form.appendChild(header);

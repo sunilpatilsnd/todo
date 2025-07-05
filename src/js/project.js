@@ -13,6 +13,9 @@ const createProject = (title) => {
     editTitle(newTitle) {
       this.title = newTitle;
     },
+    deleteTodo(id) {
+      console.log(id);
+    },
   };
 };
 

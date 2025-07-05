@@ -1,4 +1,5 @@
-const { getTodoUI, todoForm } = require("./todoUI");
+const { getTodoUI } = require("./todoUI");
+const { todoForm } = require("./todoForm.js");
 
 function loadProject(project) {
   const container = document.querySelector(".projects");

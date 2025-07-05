@@ -5,7 +5,8 @@ const showTodoModal = (todo) => {
   todoModal.id = todo.id + "_modal"; // setting modal id using todo ID
 
   const closeBtn = document.createElement("button");
-  closeBtn.textContent = "close";
+  closeBtn.textContent = "X";
+  closeBtn.classList.add("closeBtn");
   todoModal.appendChild(closeBtn);
 
   const title = document.createElement("h1");
