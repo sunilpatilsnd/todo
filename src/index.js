@@ -1,5 +1,5 @@
-const { runApp } = require("./js/app.js");
+const { App } = require("./js/app.js");
 
 import "./styles.css";
 
-runApp();
+let app = App();

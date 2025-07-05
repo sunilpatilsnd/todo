@@ -3,7 +3,7 @@ const { createProject } = require("./project.js");
 const { loadProject } = require("./projectUI.js");
 const { listProjects } = require("./sidabarUI.js");
 
-const runApp = () => {
+const App = () => {
   let ProjectList = [];
   //   console.log(ProjectList);
 
@@ -42,8 +42,15 @@ const runApp = () => {
 
   loadProject(p1);
   listProjects(ProjectList);
+
+  return {
+    ProjectList,
+    addProject() {
+      ProjectList.push(project);
+    },
+  };
 };
-export { runApp };
+export { App };
 
 // let ProjectList = [];
 

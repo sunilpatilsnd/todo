@@ -45,8 +45,4 @@ function loadProject(project) {
   container.appendChild(projectUI);
 }
 
-const addProject = (event) => {
-  console.log("add project form needs to be added");
-};
-
-export { loadProject, addProject };
+export { loadProject };
