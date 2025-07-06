@@ -11,7 +11,7 @@ const createTodoItem = (title, description, dueDate, priority, completed) => {
     priority: priority,
     completed: completed ? completed : false,
     markCompleated() {
-      return (this.completed = true);
+      this.completed = true;
     },
   };
 };

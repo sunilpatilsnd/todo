@@ -16,8 +16,7 @@ const App = () => {
     "take time and clense your teeth",
     new Date(),
     "high",
-    ["brush", "toothpaste"],
-    false
+    true
   );
 
   const t2 = createTodoItem(
@@ -25,7 +24,6 @@ const App = () => {
     "time to wash youeself",
     new Date("06/23/2024"),
     "high",
-    ["towel", "soap"],
     false
   );
   //   console.log(t1);

@@ -1,5 +1,5 @@
 const { createProject } = require("./project.js");
-const { loadProject } = require("./projectUI.js");
+
 
 const addProjectUI = (projects) => {
   const dialog = document.querySelector("#projectForm");

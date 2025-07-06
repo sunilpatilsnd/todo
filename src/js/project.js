@@ -13,8 +13,10 @@ const createProject = (title) => {
     editTitle(newTitle) {
       this.title = newTitle;
     },
-    deleteTodo(id) {
-      console.log(id);
+    deleteTodo(todo) {
+      let newTodos = this.todos.filter((item) => item.id != todo.id);
+      this.todos = newTodos;
+      console.log(newTodos);
     },
   };
 };

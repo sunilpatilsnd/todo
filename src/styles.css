@@ -181,56 +181,51 @@ footer a {
   color: #fff;
 }
 
-.projects {
-  .project {
-    border: 1px solid #222831;
-    border-radius: 12px;
-    h2 {
-      padding: 1rem;
-      background-color: #222831;
-      color: #fff;
-      border-top-right-radius: 10px;
-      border-top-left-radius: 10px;
-    }
-    .todos {
-      margin: 1rem;
-
-      .todo {
-        margin: 1rem;
-        padding: 1rem;
-        border: 1px solid #000;
-        border-radius: 10px;
-        cursor: pointer;
-        h3 {
-          font-weight: 600;
-          font-size: 1.2rem;
-        }
-      }
-    }
-  }
-  h2 {
-    font-size: 2rem;
-    padding: 1rem 0;
-    font-weight: bold;
-  }
+.projects > .project {
+  border: 1px solid #222831;
+  border-radius: 12px;
 }
-
+.project > h2 {
+  font-size: 2rem;
+  padding: 1rem 0;
+  font-weight: bold;
+  padding: 1rem;
+  background-color: #222831;
+  color: #fff;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.project .todos {
+  margin: 1rem;
+}
+.project .todos .todo {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.project .todos .todo h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
 aside {
   color: #fff;
-  h2 {
-    font-weight: 600;
-    font-size: 1.2rem;
-    padding-bottom: 0.5rem;
-  }
-  ul {
-    margin-left: 0.5rem;
-  }
-  li {
-    margin-bottom: 0.5rem;
-  }
-  li:hover {
-    cursor: pointer;
-  }
+}
+
+aside h2 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+}
+aside ul {
+  margin-left: 0.5rem;
+}
+aside li {
+  margin-bottom: 0.5rem;
+}
+aside li:hover {
+  cursor: pointer;
 }
 
 ::backdrop {

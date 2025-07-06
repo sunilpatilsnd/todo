@@ -1,10 +1,7 @@
-const { loadProject } = require("./projectUI.js");
-
 const { format } = require("date-fns");
 const { showTodoModal } = require("./todoModalUI.js");
-const { createTodoItem } = require("./todo.js");
 
-const getTodoUI = (todo) => {
+const getTodoUI = (todo, project) => {
   const todoUI = document.createElement("div");
   todoUI.id = todo.id;
   todoUI.classList.add("todo");
@@ -26,7 +23,7 @@ const getTodoUI = (todo) => {
     "click",
     (event) => {
       event.preventDefault;
-      showTodoModal(todo);
+      showTodoModal(todo, project);
     },
     true
   );

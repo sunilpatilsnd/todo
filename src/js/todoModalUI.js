@@ -1,6 +1,7 @@
 const { format } = require("date-fns");
+const {} = require("./project.js");
 
-const showTodoModal = (todo) => {
+const showTodoModal = (todo, project) => {
   const todoModal = document.createElement("dialog");
   todoModal.id = todo.id + "_modal"; // setting modal id using todo ID
 
@@ -25,10 +26,29 @@ const showTodoModal = (todo) => {
   priority.textContent = todo.priority;
   todoModal.appendChild(priority);
 
+  const completed = document.createElement("p");
+
+  completed.textContent = todo.completed ? "completed" : "not completed";
+  todoModal.appendChild(completed);
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.setAttribute("todoID", todo.id);
+
+  todoModal.appendChild(deleteBtn);
+
+  deleteBtn.addEventListener("click", () => {
+    project.deleteTodo(todo);
+    const { loadProject } = require("./projectUI.js");
+    loadProject(project);
+    todoModal.close();
+  });
+
   const container = document.querySelector(".todoModal");
   while (container.lastChild) {
     container.removeChild(container.lastChild);
   }
+
   container.appendChild(todoModal);
 
   todoModal.showModal();

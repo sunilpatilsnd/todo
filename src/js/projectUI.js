@@ -23,7 +23,7 @@ function loadProject(project) {
 
   if (project.todos) {
     project.todos.forEach((item) => {
-      const todoItem = getTodoUI(item);
+      const todoItem = getTodoUI(item, project);
       todosUI.appendChild(todoItem);
     });
   } else {
