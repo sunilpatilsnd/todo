@@ -14,9 +14,8 @@ const createProject = (title) => {
       this.title = newTitle;
     },
     deleteTodo(todo) {
-      let newTodos = this.todos.filter((item) => item.id != todo.id);
-      this.todos = newTodos;
-      console.log(newTodos);
+      this.todos = this.todos.filter((item) => item.id != todo.id);
+      console.log(this.todos);
     },
   };
 };

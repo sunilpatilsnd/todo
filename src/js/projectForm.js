@@ -1,6 +1,5 @@
 const { createProject } = require("./project.js");
 
-
 const addProjectUI = (projects) => {
   const dialog = document.querySelector("#projectForm");
 
@@ -53,10 +52,10 @@ const addProjectUI = (projects) => {
     const project = createProject(title.value);
 
     projects.push(project); // adding project to the project list
-
     const { listProjects } = require("./sidabarUI.js"); // importing only on submit to avoid circular dependancy
-
+    const { loadProject } = require("./projectUI.js");
     listProjects(projects);
+    loadProject(project);
     dialog.close();
   });
 };

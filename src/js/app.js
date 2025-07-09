@@ -1,53 +1,16 @@
-const { createTodoItem, addTodoItem } = require("./todo.js");
-const { createProject } = require("./project.js");
-const { loadProject } = require("./projectUI.js");
-const { listProjects } = require("./sidabarUI.js");
-
 const App = () => {
-  let ProjectList = [];
-  //   console.log(ProjectList);
-
-  const p1 = createProject("Hello Project");
-  //   console.log(p1);
-  const p2 = createProject("Sunil Project");
-
-  const t1 = createTodoItem(
-    "brush",
-    "take time and clense your teeth",
-    new Date(),
-    "high",
-    true
-  );
-
-  const t2 = createTodoItem(
-    "bath",
-    "time to wash youeself",
-    new Date("06/23/2024"),
-    "high",
-    false
-  );
-  //   console.log(t1);
-  p1.addTodo(t1);
-  p2.addTodo(t1);
-  p2.addTodo(t2);
-
-  p1.editTitle("This is new");
-
-  ProjectList.push(p1, p2);
-  //   ProjectList.push(p2);
-
-  ProjectList;
-
-  loadProject(p1);
-  listProjects(ProjectList);
-
   return {
-    ProjectList,
+    ProjectList: [],
     addProject() {
-      ProjectList.push(project);
+      this.ProjectList.push(project);
+    },
+    deleteProject(delId) {
+      this.ProjectList = ProjectList.filter((project) => project.id != delId);
+      console.log(ProjectList);
     },
   };
 };
+
 export { App };
 
 // let ProjectList = [];
