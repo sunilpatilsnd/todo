@@ -13,22 +13,31 @@ const p1 = createProject("Default");
 const p2 = createProject("User Created Project");
 
 const t1 = createTodoItem(
-  "brush",
-  "take time and clense your teeth",
+  "Read Documentation",
+  "take time go through all documentation",
   new Date(),
-  "high",
+  "low",
   true
 );
 
 const t2 = createTodoItem(
-  "bath",
-  "time to wash youeself",
+  "Work on App",
+  "Spend two hours on building the app",
   new Date("06/23/2024"),
   "high",
   false
 );
+
+const t3 = createTodoItem(
+  "Deploy Changes",
+  "deploy to github pages",
+  new Date(),
+  "medium",
+  true
+);
 //   console.log(t1);
 p1.addTodo(t1);
+p1.addTodo(t3);
 p2.addTodo(t1);
 p2.addTodo(t2);
 

@@ -15,7 +15,7 @@ const todoForm = (project) => {
   form.setAttribute("method", "post");
 
   const formTitle = document.createElement("h2");
-  formTitle.textContent = `Project: ${project.title}`;
+  formTitle.textContent = `Add todo`;
   formTitle.classList.add("header");
 
   form.appendChild(formTitle);
@@ -23,34 +23,47 @@ const todoForm = (project) => {
   const title = document.createElement("input");
   const titleContainer = document.createElement("label");
 
+  const titleText = document.createElement("span");
+  titleText.classList.add("label");
+  titleText.textContent = "Title: ";
+
   title.setAttribute("type", "text");
   title.setAttribute("name", "title");
   title.setAttribute("required", true);
 
-  titleContainer.textContent = "Title: ";
+  titleContainer.appendChild(titleText);
   titleContainer.appendChild(title);
 
   form.appendChild(titleContainer);
 
   const description = document.createElement("textarea");
   const descriptionContainer = document.createElement("label");
+  const descriptionText = document.createElement("spam");
+
+  descriptionText.textContent = "Description: ";
+  descriptionText.classList.add("label");
 
   description.setAttribute("name", "description");
   description.setAttribute("placeholder", "Enter Task description");
 
-  descriptionContainer.textContent = "Description: ";
+  descriptionContainer.appendChild(descriptionText);
   descriptionContainer.appendChild(description);
 
   form.appendChild(descriptionContainer);
 
   const dueDateContainer = document.createElement("label");
   const dueDate = document.createElement("input");
+  const dueDateText = document.createElement("span");
+
+  dueDateText.textContent = "Due Date: ";
+  dueDateText.classList.add("label");
+
   dueDate.setAttribute("type", "date");
   dueDate.setAttribute("name", "dueDate");
   dueDate.setAttribute("value", format(new Date(), "yyyy-MM-dd"));
   dueDate.setAttribute("min", format(new Date(), "yyyy-MM-dd"));
 
-  dueDateContainer.textContent = "Due Date: ";
+  dueDateContainer.appendChild(dueDateText);
   dueDateContainer.appendChild(dueDate);
 
   form.appendChild(dueDateContainer);
@@ -59,8 +72,11 @@ const todoForm = (project) => {
 
   const priorityContainer = document.createElement("label");
   const priority = document.createElement("select");
+  const priorityText = document.createElement("span");
 
-  priorityContainer.textContent = "Priority";
+  priorityText.textContent = "Priority";
+  priorityText.classList.add("label");
+
   priority.setAttribute("name", "priority");
 
   options.forEach((option) => {
@@ -71,41 +87,42 @@ const todoForm = (project) => {
     priority.appendChild(item);
   });
 
+  priorityContainer.appendChild(priorityText);
   priorityContainer.appendChild(priority);
 
   form.appendChild(priorityContainer);
 
-  const fieldset = document.createElement("fieldset");
-  const legend = document.createElement("legend");
+  // const fieldset = document.createElement("fieldset");
+  // const legend = document.createElement("legend");
 
-  legend.textContent = "Is this task completed?";
+  // legend.textContent = "Is this task completed?";
 
-  fieldset.appendChild(legend);
+  // fieldset.appendChild(legend);
 
-  const completedContainer = document.createElement("label");
-  const completed = document.createElement("input");
+  // const completedContainer = document.createElement("label");
+  // const completed = document.createElement("input");
 
-  completedContainer.textContent = "Yes: ";
-  completed.setAttribute("type", "radio");
-  completed.setAttribute("name", "completed");
-  completed.setAttribute("value", true);
+  // completedContainer.textContent = "Yes: ";
+  // completed.setAttribute("type", "radio");
+  // completed.setAttribute("name", "completed");
+  // completed.setAttribute("value", true);
 
-  completedContainer.appendChild(completed);
-  fieldset.appendChild(completedContainer);
+  // completedContainer.appendChild(completed);
+  // fieldset.appendChild(completedContainer);
 
-  const notCompletedContainer = document.createElement("label");
-  const notCompleted = document.createElement("input");
+  // const notCompletedContainer = document.createElement("label");
+  // const notCompleted = document.createElement("input");
 
-  notCompletedContainer.textContent = "No: ";
-  notCompleted.setAttribute("type", "radio");
-  notCompleted.setAttribute("name", "completed");
-  notCompleted.setAttribute("value", false);
+  // notCompletedContainer.textContent = "No: ";
+  // notCompleted.setAttribute("type", "radio");
+  // notCompleted.setAttribute("name", "completed");
+  // notCompleted.setAttribute("value", false);
 
-  notCompletedContainer.appendChild(notCompleted);
+  // notCompletedContainer.appendChild(notCompleted);
 
-  fieldset.appendChild(notCompletedContainer);
+  // fieldset.appendChild(notCompletedContainer);
 
-  form.appendChild(fieldset);
+  // form.appendChild(fieldset);
 
   const submitBtn = document.createElement("button");
   submitBtn.textContent = "Add To Do";
@@ -140,7 +157,7 @@ const todoForm = (project) => {
       description.value,
       new Date(dueDate.value || new Date()),
       priority.value,
-      completed.value
+      false
     );
 
     project.addTodo(todo);

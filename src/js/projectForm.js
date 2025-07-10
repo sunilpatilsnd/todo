@@ -8,11 +8,12 @@ const addProjectUI = (projects) => {
   }
 
   const form = document.createElement("form");
+  form.classList.add("projectForm");
   form.setAttribute("action", "/");
   form.setAttribute("method", "post");
 
   const header = document.createElement("h2");
-  header.textContent = "Add New Project";
+  header.textContent = "Add new project";
 
   form.appendChild(header);
 
@@ -22,8 +23,11 @@ const addProjectUI = (projects) => {
   title.setAttribute("name", "title");
 
   const titleContainer = document.createElement("label");
-  titleContainer.textContent = "Title: ";
+  const lbltxt = document.createElement("span");
+  lbltxt.classList.add("label");
+  lbltxt.textContent = "Title: ";
 
+  titleContainer.appendChild(lbltxt);
   titleContainer.appendChild(title);
 
   form.appendChild(titleContainer);

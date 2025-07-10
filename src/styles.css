@@ -182,25 +182,37 @@ footer {
 footer a {
   color: #fff;
 }
-
+.project {
+  max-width: 35vw;
+}
 .project > h2 {
   font-size: 1.4rem;
   padding: 1rem 0;
 }
-
+.project .todos {
+  display: grid;
+  grid-template-columns: 50ch 50ch;
+  gap: 1rem;
+}
 .project .todos .todo {
+  position: relative;
   padding: 1rem;
-  border: 1px solid #000;
+  border: 1px solid #222831;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 6px 6px 6px 2px #4e4e4e33;
+  box-shadow: 3px 3px 5px 2px #00000047;
   margin: 0.5rem 0rem;
+  border-left: 10px solid #222831;
 }
 .project .todos .todo h3 {
   font-weight: 600;
   font-size: 1.2rem;
+  padding-bottom: 0.5rem;
 }
-
+.project .todos .todo p {
+  font-style: italic;
+  font-weight: bold;
+}
 aside h2 {
   font-weight: 600;
   font-size: 1.2rem;
@@ -215,15 +227,12 @@ aside li {
 }
 aside li:hover {
   cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 ::backdrop {
   background-color: rgb(0, 0, 0, 0.7);
-}
-.closeBtn {
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 
 label {
@@ -234,19 +243,119 @@ button {
   background: #222831;
   color: #fff;
   padding: 0.5rem 1rem;
-  margin: 10px;
-
+  margin: 0 5px;
   border-radius: 10px;
   border: none;
   font-size: 0.8rem;
+  box-shadow: 2px 2px 4px 1px #0000007a;
 }
 form {
-  padding: 2.5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 form h2 {
-  font-size: 1.5rem;
-  padding-bottom: 1rem;
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+
+  border-bottom: 1px solid #222831;
 }
 input {
   margin-bottom: 0.5rem;
+}
+dialog {
+  border-radius: 10px;
+}
+label {
+  margin: 1rem 0;
+}
+.label {
+  font-size: 1rem;
+  padding-right: 10px;
+}
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  line-height: 1.5;
+}
+.delete {
+  background: #9b0b0b;
+  float: right;
+}
+#todoForm form {
+  margin-bottom: 3rem;
+}
+#todoForm label {
+  margin: 0.5rem 0;
+  display: block;
+}
+#todoForm input,
+#todoForm textarea,
+#todoForm select {
+  width: 60%;
+}
+#todoForm .label {
+  width: 30%;
+  display: inline-block;
+  text-align: right;
+  vertical-align: top;
+}
+#todoForm form button {
+  margin-top: 1rem;
+  float: right;
+}
+.priority {
+  background-color: #222831;
+  position: absolute;
+  color: white;
+  top: 0;
+  right: 10px;
+  padding: 5px 10px;
+  box-shadow: 3px 2px 9px 0px #00000091;
+}
+.bg-red {
+  background-color: #9b0b0b;
+}
+.bg-orange {
+  background-color: orange;
+  color: #000;
+}
+.bg-yellow {
+  background-color: yellow;
+  color: #000;
+}
+.strike {
+  text-decoration: line-through;
+}
+.todoModal {
+  padding: 2.5rem 1rem 1rem 1.5rem;
+}
+.todoModal h1 {
+  font-size: 1.4rem;
+  padding-bottom: 0.5rem;
+}
+.todoModal .description {
+  font-size: 0.8rem;
+  font-style: italic;
+  max-width: 50ch;
+  padding-bottom: 0.8rem;
+}
+.dueDate {
+  font-size: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+.todoModal .priority {
+  position: relative;
+  margin-bottom: 0.8rem;
+  margin-left: 0.5rem;
+  display: inline-block;
+  text-decoration: inherit;
+}
+.todoModal .status {
+  margin-bottom: 1.5rem;
+}
+.todoModal button {
+  float: right;
 }

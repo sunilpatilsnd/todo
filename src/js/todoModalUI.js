@@ -4,6 +4,7 @@ const {} = require("./project.js");
 const showTodoModal = (todo, project) => {
   const todoModal = document.createElement("dialog");
   todoModal.id = todo.id + "_modal"; // setting modal id using todo ID
+  todoModal.classList.add("todoModal");
 
   const closeBtn = document.createElement("button");
   closeBtn.textContent = "X";
@@ -16,19 +17,39 @@ const showTodoModal = (todo, project) => {
 
   const description = document.createElement("p");
   description.textContent = todo.description;
+  description.classList.add("description");
   todoModal.appendChild(description);
 
   const dueDate = document.createElement("p");
-  dueDate.textContent = format(todo.dueDate, "do MMM yyyy");
+  dueDate.textContent = `Due on : ${format(todo.dueDate, "do MMM yyyy")}`;
+  dueDate.classList.add("dueDate");
   todoModal.appendChild(dueDate);
 
   const priority = document.createElement("p");
-  priority.textContent = todo.priority;
+  priority.textContent = `Priority : ${todo.priority}`;
+  priority.classList.add("priority");
+
+  switch (todo.priority) {
+    case "high":
+      priority.classList.add("bg-red");
+      break;
+    case "medium":
+      priority.classList.add("bg-orange");
+      break;
+    case "low":
+      priority.classList.add("bg-yellow");
+      break;
+    default:
+      priority.classList.add("priority");
+  }
+
   todoModal.appendChild(priority);
 
   const completed = document.createElement("p");
-
-  completed.textContent = todo.completed ? "completed" : "not completed";
+  completed.classList.add("status");
+  completed.textContent = `Status : ${
+    todo.completed ? "completed" : "not completed"
+  }`;
   todoModal.appendChild(completed);
 
   const deleteBtn = document.createElement("button");
@@ -47,6 +68,10 @@ const showTodoModal = (todo, project) => {
   const container = document.querySelector(".todoModal");
   while (container.lastChild) {
     container.removeChild(container.lastChild);
+  }
+
+  if (todo.completed) {
+    todoModal.classList.add("strike");
   }
 
   container.appendChild(todoModal);

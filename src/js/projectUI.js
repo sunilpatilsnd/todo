@@ -47,18 +47,20 @@ function loadProject(project) {
     todoForm(project);
   });
 
-  const deleteProject = document.createElement("button");
-  deleteProject.textContent = "Delete Project";
-  deleteProject.classList.add("deleteProj");
-  deleteProject.setAttribute("ProjectId", project.id);
-
-  deleteProject.addEventListener("click", () => {
-    handleDelete();
-  });
-
   projectUI.appendChild(todosUI);
   projectUI.appendChild(addTodo);
-  projectUI.appendChild(deleteProject);
+
+  if (project.id != "project1") {
+    const deleteProject = document.createElement("button");
+    deleteProject.textContent = "Delete Project";
+    deleteProject.classList.add("delete");
+    deleteProject.setAttribute("ProjectId", project.id);
+
+    deleteProject.addEventListener("click", () => {
+      handleDelete();
+    });
+    projectUI.appendChild(deleteProject);
+  }
 
   container.appendChild(projectUI);
 
