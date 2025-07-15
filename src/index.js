@@ -25,7 +25,7 @@ const t2 = createTodoItem(
   "Spend two hours on building the app",
   new Date("06/23/2024"),
   "high",
-  false
+  true
 );
 
 const t3 = createTodoItem(
