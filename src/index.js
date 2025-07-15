@@ -1,8 +1,8 @@
 const { App } = require("./js/app.js");
 const { createTodoItem, addTodoItem } = require("./js/todo.js");
 const { createProject } = require("./js/project.js");
-const { loadProject } = require("./js/projectUI.js");
-const { listProjects } = require("./js/sidabarUI.js");
+const { loadProject } = require("./UI/projectUI.js");
+const { listProjects } = require("./UI/sidabarUI.js");
 
 import "./styles.css";
 
@@ -40,6 +40,8 @@ p1.addTodo(t1);
 p1.addTodo(t3);
 p2.addTodo(t1);
 p2.addTodo(t2);
+
+t1.editTodo("new title");
 
 app.ProjectList.push(p1, p2);
 //   ProjectList.push(p2);

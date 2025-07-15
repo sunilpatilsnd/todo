@@ -33,6 +33,7 @@ const listProjects = (projects) => {
 
   // const projectForm = document.querySelector("#projectForm");
   const button = document.createElement("button");
+  button.classList.add("addProject");
   button.textContent = "Add Project";
 
   container.appendChild(button);

@@ -1,5 +1,5 @@
 const { format } = require("date-fns");
-const {} = require("./project.js");
+const {} = require("../js/project.js");
 
 const showTodoModal = (todo, project) => {
   const todoModal = document.createElement("dialog");
@@ -26,21 +26,26 @@ const showTodoModal = (todo, project) => {
   todoModal.appendChild(dueDate);
 
   const priority = document.createElement("p");
-  priority.textContent = `Priority : ${todo.priority}`;
-  priority.classList.add("priority");
+  priority.textContent = `Priority :`;
+
+  const prioritySpan = document.createElement("span");
+  prioritySpan.textContent = `${todo.priority}`;
+  prioritySpan.classList.add("priority");
+
+  priority.appendChild(prioritySpan);
 
   switch (todo.priority) {
     case "high":
-      priority.classList.add("bg-red");
+      prioritySpan.classList.add("bg-red");
       break;
     case "medium":
-      priority.classList.add("bg-orange");
+      prioritySpan.classList.add("bg-orange");
       break;
     case "low":
-      priority.classList.add("bg-yellow");
+      prioritySpan.classList.add("bg-yellow");
       break;
     default:
-      priority.classList.add("priority");
+      prioritySpan.classList.add("priority");
   }
 
   todoModal.appendChild(priority);
@@ -54,12 +59,26 @@ const showTodoModal = (todo, project) => {
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Delete";
+  deleteBtn.classList.add("delete");
   deleteBtn.setAttribute("todoID", todo.id);
 
   todoModal.appendChild(deleteBtn);
 
   deleteBtn.addEventListener("click", () => {
     project.deleteTodo(todo);
+    const { loadProject } = require("./projectUI.js");
+    loadProject(project);
+    todoModal.close();
+  });
+
+  const completeBtn = document.createElement("button");
+  completeBtn.textContent = !todo.completed ? "Completed" : "Not Completed";
+  completeBtn.setAttribute("todoID", todo.id);
+
+  todoModal.appendChild(completeBtn);
+
+  completeBtn.addEventListener("click", () => {
+    todo.toggleCompleated();
     const { loadProject } = require("./projectUI.js");
     loadProject(project);
     todoModal.close();

@@ -1,4 +1,4 @@
-const { getTodoUI } = require("./todoUI");
+const { getTodoUI } = require("./todoUI.js");
 const { todoForm } = require("./todoForm.js");
 
 function loadProject(project) {

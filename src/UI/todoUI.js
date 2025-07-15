@@ -1,5 +1,6 @@
 const { format } = require("date-fns");
 const { showTodoModal } = require("./todoModalUI.js");
+const { editTodoForm } = require("./editTodoForm.js");
 
 const getTodoUI = (todo, project) => {
   const todoUI = document.createElement("div");
@@ -10,6 +11,7 @@ const getTodoUI = (todo, project) => {
   title.textContent = todo.title;
 
   const dueDate = document.createElement("p");
+  dueDate.classList.add("due-date");
   dueDate.textContent = `Due on :${format(todo.dueDate, "do MMM yyyy")}`;
 
   const priority = document.createElement("span");
@@ -39,7 +41,7 @@ const getTodoUI = (todo, project) => {
   todoUI.appendChild(dueDate);
   todoUI.appendChild(priority);
 
-  todoUI.addEventListener(
+  title.addEventListener(
     "click",
     (event) => {
       event.preventDefault;
@@ -47,6 +49,18 @@ const getTodoUI = (todo, project) => {
     },
     true
   );
+
+  const button = document.createElement("button");
+  button.textContent = "edit";
+
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    editTodoForm(project, todo);
+  });
+
+  todoUI.appendChild(button);
 
   if (todo.status) {
     todoUI.classList.add("strike");

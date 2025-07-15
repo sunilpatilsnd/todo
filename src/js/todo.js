@@ -9,9 +9,16 @@ const createTodoItem = (title, description, dueDate, priority, completed) => {
     description: description,
     dueDate: dueDate,
     priority: priority,
-    completed: completed ? completed : false,
-    markCompleated() {
-      this.completed = true;
+    completed: false,
+    toggleCompleated() {
+      this.completed = !this.completed;
+    },
+    editTodo(title, descr, dueDate, priority) {
+      this.title = title || this.title;
+      this.description = descr || this.description;
+      this.dueDate = dueDate || this.dueDate;
+      this.priority = priority || this.priority;
+      this.completed = false;
     },
   };
 };

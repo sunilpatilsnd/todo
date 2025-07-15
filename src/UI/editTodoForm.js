@@ -1,8 +1,8 @@
-const { createTodoItem } = require("./todo.js");
+const { createTodoItem } = require("../js/todo.js");
 const { format } = require("date-fns");
-const { loadProject } = require("./projectUI.js");
+const { loadProject } = require("../UI/projectUI.js");
 
-const todoForm = (project) => {
+const editTodoForm = (project, todo) => {
   const formContainer = document.querySelector("#todoForm");
 
   while (formContainer.lastChild) {
@@ -15,7 +15,7 @@ const todoForm = (project) => {
   form.setAttribute("method", "post");
 
   const formTitle = document.createElement("h2");
-  formTitle.textContent = `Add todo`;
+  formTitle.textContent = `Edit todo`;
   formTitle.classList.add("header");
 
   form.appendChild(formTitle);
@@ -30,6 +30,7 @@ const todoForm = (project) => {
   title.setAttribute("type", "text");
   title.setAttribute("name", "title");
   title.setAttribute("required", true);
+  title.value = todo.title;
 
   titleContainer.appendChild(titleText);
   titleContainer.appendChild(title);
@@ -45,6 +46,7 @@ const todoForm = (project) => {
 
   description.setAttribute("name", "description");
   description.setAttribute("placeholder", "Enter Task description");
+  description.value = todo.description;
 
   descriptionContainer.appendChild(descriptionText);
   descriptionContainer.appendChild(description);
@@ -60,7 +62,7 @@ const todoForm = (project) => {
 
   dueDate.setAttribute("type", "date");
   dueDate.setAttribute("name", "dueDate");
-  dueDate.setAttribute("value", format(new Date(), "yyyy-MM-dd"));
+  dueDate.setAttribute("value", format(todo.dueDate, "yyyy-MM-dd"));
   dueDate.setAttribute("min", format(new Date(), "yyyy-MM-dd"));
 
   dueDateContainer.appendChild(dueDateText);
@@ -87,54 +89,19 @@ const todoForm = (project) => {
     priority.appendChild(item);
   });
 
+  priority.selectedIndex = options.indexOf(todo.priority);
+
   priorityContainer.appendChild(priorityText);
   priorityContainer.appendChild(priority);
 
   form.appendChild(priorityContainer);
 
-  // const fieldset = document.createElement("fieldset");
-  // const legend = document.createElement("legend");
-
-  // legend.textContent = "Is this task completed?";
-
-  // fieldset.appendChild(legend);
-
-  // const completedContainer = document.createElement("label");
-  // const completed = document.createElement("input");
-
-  // completedContainer.textContent = "Yes: ";
-  // completed.setAttribute("type", "radio");
-  // completed.setAttribute("name", "completed");
-  // completed.setAttribute("value", true);
-
-  // completedContainer.appendChild(completed);
-  // fieldset.appendChild(completedContainer);
-
-  // const notCompletedContainer = document.createElement("label");
-  // const notCompleted = document.createElement("input");
-
-  // notCompletedContainer.textContent = "No: ";
-  // notCompleted.setAttribute("type", "radio");
-  // notCompleted.setAttribute("name", "completed");
-  // notCompleted.setAttribute("value", false);
-
-  // notCompletedContainer.appendChild(notCompleted);
-
-  // fieldset.appendChild(notCompletedContainer);
-
-  // form.appendChild(fieldset);
-
   const submitBtn = document.createElement("button");
-  submitBtn.textContent = "Add To Do";
+  submitBtn.textContent = "Edit To Do";
   submitBtn.setAttribute("type", "submit");
-
-  // submitBtn.addEventListener("click", (event) => {
-  //   event.preventDefault();
-  // });
 
   form.appendChild(submitBtn);
 
-  // Keep adding fields here ^^
   const closeBtn = document.createElement("button");
   closeBtn.classList.add("closeBtn");
   closeBtn.textContent = "X";
@@ -151,8 +118,7 @@ const todoForm = (project) => {
   //handelling form submit
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    const todo = createTodoItem(
+    todo.editTodo(
       title.value,
       description.value,
       new Date(dueDate.value || new Date()),
@@ -160,12 +126,10 @@ const todoForm = (project) => {
       false
     );
 
-    project.addTodo(todo);
-
     loadProject(project);
 
     formContainer.close();
   });
 };
 
-export { todoForm };
+export { editTodoForm };
