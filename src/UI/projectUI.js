@@ -1,3 +1,6 @@
+import { App } from "../js/app.js";
+const { saveToLocalstorage } = require("../js/handleStorage.js");
+
 const { getTodoUI } = require("./todoUI.js");
 const { todoForm } = require("./todoForm.js");
 
@@ -6,13 +9,6 @@ function loadProject(project) {
 
   while (container.lastChild) {
     container.removeChild(container.lastChild);
-  }
-
-  if (!project) {
-    const p = document.createElement("p");
-    p.textContent = "No Projects to Show";
-    container.appendChild(p);
-    return;
   }
 
   const projectUI = document.createElement("div");
@@ -28,16 +24,16 @@ function loadProject(project) {
 
   // console.log(project.todos.length);
 
-  if (project.todos.length > 0) {
-    project.todos.forEach((item) => {
-      const todoItem = getTodoUI(item, project);
-      todosUI.appendChild(todoItem);
-    });
-  } else {
+  if (project.todos.length == 0) {
     const messege = document.createElement("p");
     messege.textContent = "No Todo Items to show";
     todosUI.appendChild(messege);
   }
+
+  project.todos.forEach((item) => {
+    const todoItem = getTodoUI(item, project);
+    todosUI.appendChild(todoItem);
+  });
 
   const addTodo = document.createElement("button");
   addTodo.textContent = "Add To Do";
@@ -65,12 +61,12 @@ function loadProject(project) {
   container.appendChild(projectUI);
 
   const handleDelete = () => {
-    const { app } = require("../index.js");
     const { listProjects } = require("./sidabarUI.js");
-    app.ProjectList = app.ProjectList.filter((item) => item.id != project.id);
-    console.log(app.ProjectList);
-    loadProject(app.ProjectList[0]);
-    listProjects(app.ProjectList);
+    App.projectList = App.projectList.filter((item) => item.id != project.id);
+    loadProject(App.projectList[0]);
+    console.log(App.projectList);
+    listProjects(App.projectList);
+    saveToLocalstorage();
   };
 }
 

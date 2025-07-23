@@ -1,3 +1,5 @@
+const { saveToLocalstorage } = require("../js/handleStorage.js");
+
 const { format } = require("date-fns");
 const {} = require("../js/project.js");
 
@@ -67,6 +69,9 @@ const showTodoModal = (todo, project) => {
   deleteBtn.addEventListener("click", () => {
     project.deleteTodo(todo);
     const { loadProject } = require("./projectUI.js");
+
+    saveToLocalstorage();
+
     loadProject(project);
     todoModal.close();
   });
@@ -79,6 +84,8 @@ const showTodoModal = (todo, project) => {
 
   completeBtn.addEventListener("click", () => {
     todo.toggleCompleated();
+    console.log(todo);
+    saveToLocalstorage();
     const { loadProject } = require("./projectUI.js");
     loadProject(project);
     todoModal.close();

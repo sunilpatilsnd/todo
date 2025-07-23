@@ -1,4 +1,5 @@
 const { createProject } = require("../js/project.js");
+const { saveToLocalstorage } = require("../js/handleStorage.js");
 
 const addProjectUI = (projects) => {
   const dialog = document.querySelector("#projectForm");
@@ -61,6 +62,8 @@ const addProjectUI = (projects) => {
     listProjects(projects);
     loadProject(project);
     dialog.close();
+
+    saveToLocalstorage();
   });
 };
 

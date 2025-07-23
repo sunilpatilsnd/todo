@@ -1,6 +1,7 @@
 const { createTodoItem } = require("../js/todo.js");
 const { format } = require("date-fns");
 const { loadProject } = require("../UI/projectUI.js");
+const { saveToLocalstorage } = require("../js/handleStorage.js");
 
 const editTodoForm = (project, todo) => {
   const formContainer = document.querySelector("#todoForm");
@@ -125,6 +126,8 @@ const editTodoForm = (project, todo) => {
       priority.value,
       false
     );
+
+    saveToLocalstorage();
 
     loadProject(project);
 

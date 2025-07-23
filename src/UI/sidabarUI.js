@@ -1,7 +1,9 @@
 const { loadProject } = require("./projectUI.js");
 const { addProjectUI } = require("./projectForm.js");
+const { App } = require("../js/app.js");
 
-const listProjects = (projects) => {
+const listProjects = () => {
+  // console.log(App.projectList);
   const container = document.querySelector("aside");
 
   //empty the sidebar
@@ -14,7 +16,8 @@ const listProjects = (projects) => {
 
   const projectsList = document.createElement("ul");
 
-  projects.forEach((project) => {
+  App.projectList.forEach((project) => {
+    // console.log(project.title);
     const item = document.createElement("li");
     item.textContent = project.title;
     item.id = project.id + "_sidebar";
@@ -39,7 +42,7 @@ const listProjects = (projects) => {
   container.appendChild(button);
 
   button.addEventListener("click", () => {
-    addProjectUI(projects);
+    addProjectUI(App.projectList);
     // listProjects(projects);
   });
 };

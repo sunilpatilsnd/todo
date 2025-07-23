@@ -62,7 +62,7 @@ const getTodoUI = (todo, project) => {
 
   todoUI.appendChild(button);
 
-  if (todo.status) {
+  if (todo.status == true) {
     todoUI.classList.add("strike");
   }
 

@@ -9,7 +9,7 @@ const createTodoItem = (title, description, dueDate, priority, completed) => {
     description: description,
     dueDate: dueDate,
     priority: priority,
-    completed: false,
+    completed: false || completed,
     toggleCompleated() {
       this.completed = !this.completed;
     },
@@ -18,7 +18,7 @@ const createTodoItem = (title, description, dueDate, priority, completed) => {
       this.description = descr || this.description;
       this.dueDate = dueDate || this.dueDate;
       this.priority = priority || this.priority;
-      this.completed = false;
+      this.completed = false || completed;
     },
   };
 };

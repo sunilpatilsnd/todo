@@ -1,8 +1,8 @@
-const App = () => {
+const createApp = () => {
   return {
-    ProjectList: [],
-    addProject() {
-      this.ProjectList.push(project);
+    projectList: [],
+    addProject(project) {
+      this.projectList.push(project);
     },
     deleteProject(delId) {
       this.ProjectList = ProjectList.filter((project) => project.id != delId);
@@ -10,5 +10,9 @@ const App = () => {
     },
   };
 };
+
+const App = createApp();
+
+// console.log(App);
 
 export { App };
